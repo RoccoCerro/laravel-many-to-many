@@ -15,8 +15,8 @@
         <p>{!! $project->content !!}</p>
       </div>
       <div class="technology">
-        <ul>
-          @dd($project->technologies)
+        <strong>Tecnologia: </strong>
+        <ul class="list-unstyled">
           @foreach($project->technologies as $tech) 
             <li>{{ $tech->name }}</li>
           @endforeach
