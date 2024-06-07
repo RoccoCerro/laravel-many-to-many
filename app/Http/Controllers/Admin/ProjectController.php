@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -30,8 +31,9 @@ class ProjectController extends Controller
     {
 
         $types = Type::orderBy('name', 'asc')->get();
+        $technologies = Technology::orderBy('name','asc')->get();
 
-        return view('admin.projects.create', compact('types'));
+        return view('admin.projects.create', compact('types','technologies'));
     }
 
     /**
@@ -65,6 +67,10 @@ class ProjectController extends Controller
         }
 
         $new_project = Project::create($data_projects);
+
+        if ($request->has('technologies')) {
+            $new_project->technologies()->sync($request->technologies);
+        }
 
         return to_route('admin.projects.show', $new_project);
     }
