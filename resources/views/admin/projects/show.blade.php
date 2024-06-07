@@ -14,6 +14,14 @@
         <strong>Contenuto: </strong>
         <p>{!! $project->content !!}</p>
       </div>
+      <div class="technology">
+        <ul>
+          @dd($project->technologies)
+          @foreach($project->technologies as $tech) 
+            <li>{{ $tech->name }}</li>
+          @endforeach
+        </ul>
+      </div>
       <div class="project-img">
         <img src="{{ $project->img_url }}" alt="">
       </div>
