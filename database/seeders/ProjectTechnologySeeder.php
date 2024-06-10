@@ -22,7 +22,7 @@ class ProjectTechnologySeeder extends Seeder
 
         foreach ($projects as $project) {
 
-            $rand_tech = rand(1,count($technologies));
+            $rand_tech = rand(1, count($technologies));
 
             $project->technologies()->sync($rand_tech);
             $project->save();

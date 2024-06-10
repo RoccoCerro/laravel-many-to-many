@@ -93,6 +93,7 @@
         </nav>
 
         <main class="">
+            @yield('hero')
             @yield('content')
         </main>
     </div>
