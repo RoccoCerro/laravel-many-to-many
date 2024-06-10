@@ -3,20 +3,21 @@
 @section('content')
 <section class="create-types p-5">
   <div class="container">
-    <h2 class="fs-2">Add new Technology</h2>
+    <h2 class="fs-2">Edit Technology</h2>
   </div>
   <div class="container">
-    <form action="{{ route('admin.technologies.store') }}" method="POST">
+    <form action="{{ route('admin.technologies.update', $technology) }}" method="POST">
 
       {{-- Cross Site Request Forgering --}}
       @csrf 
+      @method('PUT')
 
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input type="text" name="name" class="form-control" id="name" placeholder="insert name.." value="{{ old('name') }}">
+        <input type="text" name="name" class="form-control" id="name" placeholder="insert name.." value="{{ old('name', $technology->name) }}">
       </div>
 
-      <button class="btn btn-dark">Add Technology</button>
+      <button class="btn btn-dark">Edit Type</button>
 
     </form>
 
